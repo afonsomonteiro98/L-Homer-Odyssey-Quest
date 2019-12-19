@@ -38,7 +38,7 @@ class SignUp extends Component {
 
     updateName(e) {
         this.setState({
-            passwordBis: e.target.value
+            name: e.target.value
         })
     }
 
@@ -49,10 +49,23 @@ class SignUp extends Component {
     }
 
     handleSubmit(e){
-        e.preventDefault();
-        return(
-            this.state.password !== this.state.passwordBis ? console.error("Your password doesn't match both fields") : console.log(JSON.stringify(this.state, 1, 1))
-        )
+        e.preventDefault()
+        if(this.state.password !== this.state.passwordBis) {
+            return console.error("Your password doesn't match both fields")
+        }
+       
+        const body = {
+            ...this.state
+        }
+        delete body.passwordBis
+
+        fetch('http://localhost:3001/auth/signup', {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
     }
 
     render(){
@@ -72,7 +85,7 @@ class SignUp extends Component {
                     <br/>
                     <label>
                         Repeat Password:
-                        <input onChange={this.updateRepeatPassword} type="password" name="password" />
+                        <input onChange={this.updateRepeatPassword} type="password" name="passwordBis" />
                     </label>
                     <br/>
                     <label>
