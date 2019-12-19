@@ -4,11 +4,14 @@
     "description": "Wild server",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon app.js"
+        "start": "nodemon app.js",
+        "db:create": "node ./sql/create.js",
+        "db:drop": "node ./sql/drop.js"
     },
     "author": "wilder",
     "dependencies": {
         "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
         "express": "^4.17.1",
         "morgan": "^1.9.1"
     },

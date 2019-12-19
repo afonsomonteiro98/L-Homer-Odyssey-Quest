@@ -5,14 +5,21 @@ const  express  =  require('express');
 const  bodyParser  =  require('body-parser');
 const  morgan  =  require('morgan');
 const  app  =  express();
+const cors = require('cors')
 
 const authRouter = require('./routes/auth')
 
 // set up the application
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended:  false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json())
+// app.use(express.urlencoded({extended:false}))
 app.use(express.static(__dirname  +  '/public'));
+app.use(cors({
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+}))
 
 //where authRouter is imported
 app.use('/auth', authRouter); 
