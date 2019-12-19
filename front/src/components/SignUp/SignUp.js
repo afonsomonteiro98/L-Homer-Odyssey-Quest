@@ -8,7 +8,8 @@ class SignUp extends Component {
             password: '',
             passwordBis: '',
             name: '',
-            lastname: ''
+            lastname: '',
+            flash: ''
         }
         this.updateEmailField = this.updateEmailField.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
@@ -58,20 +59,28 @@ class SignUp extends Component {
             ...this.state
         }
         delete body.passwordBis
+        delete body.flash
 
-        fetch('http://localhost:3001/auth/signup', {
+        fetch('/auth/signup', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {
                 "Content-Type": "application/json",
             }
+            
         })
+        .then(res => res.json())
+        .then (
+            res => this.setState({"flash": res.flash}),
+            err => this.setState({"flash": err.flash})
+        )
     }
 
     render(){
         return( 
             <div>
                 <h1>{JSON.stringify(this.state, 1, 1)}</h1>
+                <p>{this.state.flash}</p>
                 <form onSubmit={this.handleSubmit}>    
                     <label>
                         Email:
