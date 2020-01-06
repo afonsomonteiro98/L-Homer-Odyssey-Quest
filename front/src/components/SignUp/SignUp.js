@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { TextField, Button } from '@material-ui/core';
 
 class SignUp extends Component {
     constructor(props){
@@ -84,30 +85,32 @@ class SignUp extends Component {
                 <form onSubmit={this.handleSubmit}>    
                     <label>
                         Email:
-                        <input onChange={this.updateEmailField} type="email" name="email" />
+                        <TextField onChange={this.updateEmailField} type="email" name="email" />
                     </label>
                     <br/>
                     <label>
                         Password:
-                        <input onChange={this.updatePassword} type="password" name="password" />
+                        <TextField onChange={this.updatePassword} type="password" name="password" />
                     </label>
                     <br/>
                     <label>
                         Repeat Password:
-                        <input onChange={this.updateRepeatPassword} type="password" name="passwordBis" />
+                        <TextField onChange={this.updateRepeatPassword} type="password" name="passwordBis" />
                     </label>
                     <br/>
                     <label>
                         First Name:    
-                        <input onChange={this.updateName} type="text" name="name"/>
+                        <TextField onChange={this.updateName} type="text" name="name"/>
                     </label>
                     <br/> 
                     <label>  
                         Surname: 
-                        <input onChange={this.updateLastname} type="text" name="lastname"/>
+                        <TextField onChange={this.updateLastname} type="text" name="lastname"/>
                     </label>
                     <br/>    
-                    <input type="submit" value="Submit" />
+                    <Button variant="contained" color="primary" type="submit" value="Submit" id="SubmitButton">
+                        Submit
+                    </Button>
                 </form>    
             </div>    
         )
