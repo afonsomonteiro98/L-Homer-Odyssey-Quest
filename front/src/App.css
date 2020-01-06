@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: #fcb571;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
 }
 
 .App-link {
@@ -35,4 +36,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+#App {
+  min-height: 100%;
+}
+
+@media  screen  and (min-width: 640px) {
+  #App {
+          height: 100%;
+  }
+}
+
+#SubmitButton {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
